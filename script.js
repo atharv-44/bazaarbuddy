@@ -68,7 +68,6 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
         }
     });
 }, observerOptions);
@@ -79,44 +78,43 @@ document.addEventListener('DOMContentLoaded', () => {
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.style.transition = 'opacity 0.6s ease';
         observer.observe(el);
     });
 });
 
-// Product card click handlers
+// Product card click handlers - simplified
 document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', () => {
-        // Add a subtle click effect
+        // Simple click effect
         card.style.transform = 'scale(0.98)';
         setTimeout(() => {
-            card.style.transform = 'translateY(-5px)';
+            card.style.transform = 'scale(1)';
         }, 150);
     });
 });
 
-// Feature card hover effects
+// Feature card hover effects - simplified
 document.querySelectorAll('.feature-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
         const icon = card.querySelector('.feature-icon');
-        if (icon) icon.style.transform = 'scale(1.1) rotate(5deg)';
+        if (icon) icon.style.transform = 'scale(1.05)';
     });
     
     card.addEventListener('mouseleave', () => {
         const icon = card.querySelector('.feature-icon');
-        if (icon) icon.style.transform = 'scale(1) rotate(0deg)';
+        if (icon) icon.style.transform = 'scale(1)';
     });
 });
 
-// Social media icon hover effects
+// Social media icon hover effects - simplified
 document.querySelectorAll('.social-icon').forEach(icon => {
     icon.addEventListener('mouseenter', () => {
-        icon.style.transform = 'translateY(-3px) scale(1.1)';
+        icon.style.transform = 'scale(1.1)';
     });
     
     icon.addEventListener('mouseleave', () => {
-        icon.style.transform = 'translateY(0) scale(1)';
+        icon.style.transform = 'scale(1)';
     });
 });
 
@@ -261,12 +259,346 @@ style.textContent = `
     @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: translateY(20px);
         }
         to {
             opacity: 1;
-            transform: translateY(0);
         }
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Products Page Functionality
+function initializeProductsPage() {
+    // Products Data
+    const products = [
+        // Fresh Produce
+        {
+            id: 1,
+            name: "Fresh Apples",
+            category: "fresh-produce",
+            categoryName: "Fresh Produce",
+            price: 120,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+            id: 2,
+            name: "Fresh Tomatoes",
+            category: "fresh-produce",
+            categoryName: "Fresh Produce",
+            price: 80,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        
+        // Dairy & Eggs
+        {
+            id: 3,
+            name: "Fresh Milk",
+            category: "dairy-eggs",
+            categoryName: "Dairy & Eggs",
+            price: 60,
+            stock: "Low stock",
+            stockStatus: "low",
+            image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+            id: 4,
+            name: "Fresh Butter",
+            category: "dairy-eggs",
+            categoryName: "Dairy & Eggs",
+            price: 45,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+            id: 5,
+            name: "Fresh Eggs",
+            category: "dairy-eggs",
+            categoryName: "Dairy & Eggs",
+            price: 90,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1506976785307-8732e854ad8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        
+        // Bakery & Snacks
+        {
+            id: 6,
+            name: "Whole Wheat Bread",
+            category: "bakery-snacks",
+            categoryName: "Bakery & Snacks",
+            price: 35,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+            id: 7,
+            name: "Fresh Biscuits",
+            category: "bakery-snacks",
+            categoryName: "Bakery & Snacks",
+            price: 25,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1558961363-f8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        
+        // Beverages
+        {
+            id: 8,
+            name: "Premium Tea",
+            category: "beverages",
+            categoryName: "Beverages",
+            price: 150,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+            id: 9,
+            name: "Fresh Orange Juice",
+            category: "beverages",
+            categoryName: "Beverages",
+            price: 80,
+            stock: "Low stock",
+            stockStatus: "low",
+            image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        
+        // Grains & Staples
+        {
+            id: 10,
+            name: "Premium Basmati Rice",
+            category: "grains-staples",
+            categoryName: "Grains & Staples",
+            price: 180,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        
+        // Oils & Spices
+        {
+            id: 11,
+            name: "Pure Cooking Oil",
+            category: "oils-spices",
+            categoryName: "Oils & Spices",
+            price: 120,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        },
+        {
+            id: 12,
+            name: "Organic Turmeric Powder",
+            category: "oils-spices",
+            categoryName: "Oils & Spices",
+            price: 95,
+            stock: "In stock",
+            stockStatus: "in",
+            image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+        }
+    ];
+
+    // Global variables
+    let filteredProducts = [...products];
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    // DOM elements
+    const productsGrid = document.getElementById('productsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.querySelector('.search-btn');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+
+    // Setup event listeners
+    function setupEventListeners() {
+        // Search functionality
+        searchInput.addEventListener('input', handleSearch);
+        searchBtn.addEventListener('click', handleSearch);
+        
+        // Category filtering
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', handleCategoryFilter);
+        });
+        
+        // Enter key in search
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSearch();
+            }
+        });
+    }
+
+    // Handle search functionality
+    function handleSearch() {
+        searchQuery = searchInput.value.toLowerCase().trim();
+        filterProducts();
+    }
+
+    // Handle category filtering
+    function handleCategoryFilter(e) {
+        // Remove active class from all buttons
+        categoryBtns.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        e.target.classList.add('active');
+        
+        // Update current category
+        currentCategory = e.target.dataset.category;
+        
+        // Filter products
+        filterProducts();
+    }
+
+    // Filter products based on search and category
+    function filterProducts() {
+        filteredProducts = products.filter(product => {
+            const matchesSearch = product.name.toLowerCase().includes(searchQuery) ||
+                                product.categoryName.toLowerCase().includes(searchQuery);
+            const matchesCategory = currentCategory === 'all' || product.category === currentCategory;
+            
+            return matchesSearch && matchesCategory;
+        });
+        
+        renderProducts();
+    }
+
+    // Render products to the grid
+    function renderProducts() {
+        if (filteredProducts.length === 0) {
+            productsGrid.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h3>No products found</h3>
+                    <p>Try adjusting your search or category filter</p>
+                </div>
+            `;
+            return;
+        }
+        
+        productsGrid.innerHTML = filteredProducts.map(product => `
+            <div class="product-card" data-category="${product.category}">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">${product.categoryName}</div>
+                    <h3 class="product-name">${product.name}</h3>
+                    <div class="product-price">₹${product.price}</div>
+                    <div class="product-stock">
+                        <span class="stock-icon stock-${product.stockStatus}"></span>
+                        <span class="stock-status stock-${product.stockStatus}">${product.stock}</span>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                        <i class="fas fa-shopping-cart"></i>
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Add to cart functionality
+    window.addToCart = function(productId) {
+        const product = products.find(p => p.id === productId);
+        if (product) {
+            // Show success message
+            showNotification(`${product.name} added to cart!`, 'success');
+            
+            // Here you would typically add the product to a cart state
+            // For now, we'll just log it
+            console.log(`Added to cart: ${product.name}`);
+            
+            // Add animation to the button
+            const button = event.target.closest('.add-to-cart-btn');
+            button.innerHTML = '<i class="fas fa-check"></i> Added!';
+            button.style.background = '#4caf50';
+            
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
+                button.style.background = '#2e7d32';
+            }, 2000);
+        }
+    };
+
+    // Show notification
+    function showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+            <span>${message}</span>
+        `;
+        
+        // Add styles
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${type === 'success' ? '#4caf50' : '#2196f3'};
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        `;
+        
+        // Add to page
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.transform = 'translateX(400px)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+
+    // Add performance optimization
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Debounce search input
+    const debouncedSearch = debounce(handleSearch, 300);
+    searchInput.addEventListener('input', debouncedSearch);
+
+    // Initialize the products page
+    renderProducts();
+    setupEventListeners();
+}
+
+// Initialize products page if we're on the products page
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.includes('products.html')) {
+        initializeProductsPage();
+    }
+}); 

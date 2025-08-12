@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Products - BazaarBuddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>BazaarBuddy</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link active">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Header Section -->
+    <section class="products-header">
+        <div class="container">
+            <h1 class="section-title">Shop Products</h1>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search for products..." class="search-input">
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="fresh-produce">Fresh Produce</button>
+                <button class="category-btn" data-category="dairy-eggs">Dairy & Eggs</button>
+                <button class="category-btn" data-category="bakery-snacks">Bakery & Snacks</button>
+                <button class="category-btn" data-category="beverages">Beverages</button>
+                <button class="category-btn" data-category="grains-staples">Grains & Staples</button>
+                <button class="category-btn" data-category="oils-spices">Oils & Spices</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BazaarBuddy</h3>
+                    <p>Your trusted partner for fresh groceries delivered right to your doorstep. Quality products, fast delivery, and excellent service.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@bazaarbuddy.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Market Street, City, State</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BazaarBuddy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
