@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Orders - BazaarBuddy</title>
+<link rel="stylesheet" href="history.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  
+  <div class="logo">BazaarBuddy</div>
+  <div class="search-bar"><input type="text" placeholder="Search for groceries..."></div>
+  <div class="icons">
+   <span class="material-icons" style="font-size: 24px; vertical-align: middle;">
+    shopping_cart
+</span>
+
+<!-- Headset -->
+<span class="material-icons" style="font-size: 24px; vertical-align: middle;">
+    headset_mic
+</span>
+  </div>
+</header>
+
+<div class="container">
+  <h2>Your Orders</h2>
+
+  <!-- Radio buttons (hidden) -->
+  <input type="radio" name="filter" id="tab-all" checked>
+  <input type="radio" name="filter" id="tab-active">
+  <input type="radio" name="filter" id="tab-delivered">
+  <input type="radio" name="filter" id="tab-cancelled">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <label for="tab-all" class="tab">All</label>
+    <label for="tab-active" class="tab">Active</label>
+    <label for="tab-delivered" class="tab">Delivered</label>
+    <label for="tab-cancelled" class="tab">Cancelled</label>
+  </div>
+
+  <!-- Orders -->
+  <div class="orders">
+    <div class="order-card" data-status="delivered">
+      <div class="order-header">
+        <div>
+          <strong>#BB2024001</strong> <span class="status delivered">Delivered</span><br>
+          <small>Ordered on Dec 15, 2024</small><br>
+          <small>2 items • ₹162.75</small>
+        </div>
+        <div class="details-link">Click to view details →</div>
+      </div>
+      <div class="order-body">
+        <img src="../images/tom.jfif" alt="Tomatoes">
+        <div>Fresh Tomatoes and 1 more item</div>
+      </div>
+      <button class="reorder-btn">🔄 Reorder</button>
+    </div>
+
+    <div class="order-card" data-status="active">
+      <div class="order-header">
+        <div>
+          <strong>#BB2024002</strong> <span class="status out">Out for Delivery</span><br>
+          <small>Ordered on Dec 16, 2024</small><br>
+          <small>3 items • ₹346.50</small>
+        </div>
+        <div class="expected">Expected by 5:30 PM</div>
+      </div>
+      <div class="order-body">
+        <img src="../images/banaenae" alt="Banana">
+        <div>Organic Bananas and 2 more items</div>
+      </div>
+      <button class="reorder-btn">🔄 Reorder</button>
+    </div>
+
+    <div class="order-card" data-status="active">
+      <div class="order-header">
+        <div>
+          <strong>#BB2024003</strong> <span class="status confirmed">Confirmed</span><br>
+          <small>Ordered on Dec 14, 2024</small><br>
+          <small>2 items • ₹378.00</small>
+        </div>
+        <div class="expected">Expected by 6:00 PM</div>
+      </div>
+      <div class="order-body">
+        <img src="../images/brea.webp" alt="Breast Piece">
+        <div>Chicken Breast and 1 more item</div>
+      </div>
+      <button class="reorder-btn">🔄 Reorder</button>
+    </div>
+
+    <div class="order-card" data-status="cancelled">
+      <div class="order-header">
+        <div>
+          <strong>#BB2024004</strong> <span class="status cancelled">Cancelled</span><br>
+          <small>Ordered on Dec 10, 2024</small><br>
+          <small>1 item • ₹100.00</small>
+        </div>
+        <div class="details-link">Click to view details →</div>
+      </div>
+      <div class="order-body">
+        <img src="../images/milk.webp" alt="Milk Packet">
+        <div>Milk Packet</div>
+      </div>
+      <button class="reorder-btn">🔄 Reorder</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* General styling (same as before) */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f6fa;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+header .logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2ca043;
+}
+
+header .search-bar {
+  flex: 1;
+  margin: 0 20px;
+}
+
+header .search-bar input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+header .icons {
+  display: flex;
+  gap: 15px;
+}
+
+header svg {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+/* Tabs */
+input[type="radio"] {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 8px 16px;
+  background: #e0e0e0;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+input#tab-all:checked ~ .tabs label[for="tab-all"],
+input#tab-active:checked ~ .tabs label[for="tab-active"],
+input#tab-delivered:checked ~ .tabs label[for="tab-delivered"],
+input#tab-cancelled:checked ~ .tabs label[for="tab-cancelled"] {
+  background: #d6d6d6;
+}
+
+/* Order cards */
+.order-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px; /* space between cards */
+  line-height: 1.6; /* better text readability */
+}
+
+.status {
+  background: #f0f0f0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.status.delivered { background: #28a745; }
+.status.out { background: #6f42c1; }
+.status.confirmed { background: #007bff; }
+.status.cancelled { background: #dc3545; }
+
+.expected {
+  font-weight: bold;
+  color: #444;
+}
+
+.order-body {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
+}
+
+.order-body img {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.order-details p {
+  margin: 0 0 8px 0; /* space between text lines */
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.reorder-btn {
+  margin-top: 12px; /* space above button */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.reorder-btn:hover {
+  background-color: #0056b3;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* aligns status with order ID */
+  margin-bottom: 12px;
+}
+
+.order-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Filtering logic with CSS only */
+#tab-all:checked ~ .orders .order-card { display: block; }
+#tab-active:checked ~ .orders .order-card { display: none; }
+#tab-active:checked ~ .orders .order-card[data-status="active"] { display: block; }
+#tab-delivered:checked ~ .orders .order-card { display: none; }
+#tab-delivered:checked ~ .orders .order-card[data-status="delivered"] { display: block; }
+#tab-cancelled:checked ~ .orders .order-card { display: none; }
+#tab-cancelled:checked ~ .orders .order-card[data-status="cancelled"] { display: block; }
