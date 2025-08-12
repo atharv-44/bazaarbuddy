@@ -2,16 +2,18 @@
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}));
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }));
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -29,24 +31,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // CTA Button click handler
 const ctaButton = document.querySelector('.cta-button');
-ctaButton.addEventListener('click', () => {
-    // Scroll to products section
-    const productsSection = document.querySelector('#products');
-    productsSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+if (ctaButton) {
+    ctaButton.addEventListener('click', () => {
+        // Scroll to products section if present
+        const productsSection = document.querySelector('#products');
+        if (productsSection) {
+            productsSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
-});
+}
 
 // Navbar background change on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    if (navbar) {
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        }
     }
 });
 
@@ -92,12 +100,12 @@ document.querySelectorAll('.product-card').forEach(card => {
 document.querySelectorAll('.feature-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
         const icon = card.querySelector('.feature-icon');
-        icon.style.transform = 'scale(1.1) rotate(5deg)';
+        if (icon) icon.style.transform = 'scale(1.1) rotate(5deg)';
     });
     
     card.addEventListener('mouseleave', () => {
         const icon = card.querySelector('.feature-icon');
-        icon.style.transform = 'scale(1) rotate(0deg)';
+        if (icon) icon.style.transform = 'scale(1) rotate(0deg)';
     });
 });
 
@@ -129,6 +137,90 @@ document.querySelectorAll('.social-icon').forEach(link => {
         // You can add actual social media links here later
         console.log('Social media link clicked:', link.querySelector('i').className);
     });
+});
+
+// Auth tab switching functionality
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const targetTab = btn.getAttribute('data-tab');
+        
+        // Update active tab button
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Update active form
+        document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+        document.querySelector(`.${targetTab}-form`).classList.add('active');
+    });
+});
+
+// Password toggle functionality
+document.querySelectorAll('.password-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        const input = toggle.previousElementSibling;
+        const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+        input.setAttribute('type', type);
+        toggle.classList.toggle('fa-eye');
+        toggle.classList.toggle('fa-eye-slash');
+    });
+});
+
+// Form handlers for login page
+document.querySelector('.signin-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value.trim();
+    const password = this.querySelector('input[type="password"]').value.trim();
+    
+    if (!email || !password) {
+        alert('Please enter both email and password.');
+        return;
+    }
+    
+    // For demo purposes - redirect to main website after successful login
+    alert('Login successful! Redirecting to main website...');
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1000);
+});
+
+document.querySelector('.signup-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = this.querySelector('input[type="text"]').value.trim();
+    const email = this.querySelector('input[type="email"]').value.trim();
+    const phone = this.querySelector('input[type="tel"]').value.trim();
+    const password = this.querySelector('input[type="password"]').value.trim();
+    
+    if (!name || !email || !phone || !password) {
+        alert('Please fill in all fields.');
+        return;
+    }
+    
+    // For demo purposes - redirect to main website after successful registration
+    alert('Account created successfully! Redirecting to main website...');
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1000);
+});
+
+// Social login handler
+document.querySelector('.btn-social')?.addEventListener('click', function (e) {
+    e.preventDefault();
+    alert('Google login successful! Redirecting to main website...');
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1000);
+});
+
+// Demo-only form handler for login page (legacy support)
+document.querySelector('.login-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    if (!email || !password) {
+        alert('Please enter both email and password.');
+        return;
+    }
+    alert('Login submitted. Replace with real authentication.');
 });
 
 // Add a simple form validation if you add forms later

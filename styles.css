@@ -24,6 +24,7 @@ body {
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
@@ -435,3 +436,417 @@ html {
 .feature-card:nth-child(2) { animation-delay: 0.2s; }
 .feature-card:nth-child(3) { animation-delay: 0.3s; }
 .feature-card:nth-child(4) { animation-delay: 0.4s; } 
+
+/* Split Layout Login Page */
+.split-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Left Section - Promotional Content */
+.promo-section {
+    flex: 1;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 3rem;
+}
+
+.promo-content {
+    max-width: 500px;
+    width: 100%;
+}
+
+.promo-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.promo-title .highlight {
+    color: #2e7d32;
+}
+
+.promo-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+/* Category Cards */
+.category-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.category-card {
+    display: flex;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.category-image {
+    width: 120px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-info {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-info h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+}
+
+.category-info p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Service Highlights */
+.service-highlights {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #2e7d32;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.highlight-item i {
+    font-size: 1.1rem;
+}
+
+/* Right Section - Auth Form */
+.auth-section {
+    flex: 1;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+    text-align: center;
+    color: #2e7d32;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Auth Tabs */
+.auth-tabs {
+    display: flex;
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 2rem;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #2e7d32;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Auth Forms */
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group { 
+    margin-bottom: 1.5rem; 
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.input-control {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-control:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+}
+
+/* Password Input with Toggle */
+.password-input {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: #2e7d32;
+}
+
+/* Divider */
+.divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e0e0e0;
+}
+
+.divider span {
+    background: white;
+    padding: 0 1rem;
+    color: #999;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Social Login Button */
+.btn-social {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: #333;
+}
+
+.btn-social:hover {
+    background: #f8f9fa;
+    border-color: #2e7d32;
+}
+
+.btn-social i {
+    font-size: 1.2rem;
+    color: #4285f4;
+}
+
+.auth-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 0 1.25rem;
+}
+
+.auth-link {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-link:hover {
+    color: #1b5e20;
+    text-decoration: underline;
+}
+
+.btn-primary {
+    background: #2e7d32;
+    color: #ffffff;
+    border: none;
+    padding: 12px 16px;
+    width: 100%;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.25);
+}
+
+.btn-primary:hover {
+    background: #1b5e20;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(46, 125, 50, 0.35);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+}
+
+@media (max-width: 480px) {
+    .auth-card { margin: 0 14px; }
+}
+
+/* Responsive Design for Split Layout */
+@media (max-width: 1024px) {
+    .split-layout {
+        flex-direction: column;
+    }
+    
+    .promo-section {
+        padding: 3rem 2rem;
+    }
+    
+    .promo-title {
+        font-size: 2.8rem;
+    }
+    
+    .auth-section {
+        padding: 2rem 1rem;
+    }
+    
+    .auth-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .promo-title {
+        font-size: 2.2rem;
+    }
+    
+    .promo-subtitle {
+        font-size: 1rem;
+    }
+    
+    .category-cards {
+        gap: 1rem;
+    }
+    
+    .category-card {
+        flex-direction: column;
+    }
+    
+    .category-image {
+        width: 100%;
+        height: 120px;
+    }
+    
+    .service-highlights {
+        gap: 1rem;
+        justify-content: center;
+    }
+    
+    .auth-tabs {
+        margin-bottom: 1.5rem;
+    }
+    
+    .tab-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .promo-section {
+        padding: 2rem 1rem;
+    }
+    
+    .promo-title {
+        font-size: 1.8rem;
+    }
+    
+    .category-info {
+        padding: 1rem;
+    }
+    
+    .category-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .auth-card {
+        padding: 1.5rem;
+        margin: 0 10px;
+    }
+    
+    .service-highlights {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+}
