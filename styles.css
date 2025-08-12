@@ -413,7 +413,7 @@ html {
 
 /* Products Header Section */
 .products-header {
-    padding: 120px 0 60px;
+    padding: 40px 0 60px;
     background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
     text-align: center;
 }
@@ -425,9 +425,6 @@ html {
 /* Search Container */
 .search-container {
     margin-bottom: 3rem;
-    position: sticky;
-    top: 80px;
-    z-index: 100;
     background: white;
     padding: 1rem 0;
     border-bottom: 1px solid #f0f0f0;
@@ -437,11 +434,11 @@ html {
     display: flex;
     max-width: 95%;
     margin: 0 auto;
-    background: #f8f9fa;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    background: white;
+    border-radius: 8px;
+    box-shadow: none;
     overflow: hidden;
-    border: 2px solid transparent;
+    border: 1px solid #e0e0e0;
     height: 48px;
     transition: all 0.3s ease;
 }
@@ -449,22 +446,24 @@ html {
 .search-box:focus-within {
     background: white;
     border-color: #2e7d32;
-    box-shadow: 0 4px 20px rgba(46, 125, 50, 0.15);
-    transform: translateY(-1px);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
 .search-icon {
     padding: 0 18px;
-    color: #6c757d;
+    color: #999;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: transparent;
     transition: color 0.3s ease;
+    min-width: 50px;
+    height: 100%;
 }
 
 .search-box:focus-within .search-icon {
-    color: #2e7d32;
+    color: #666;
 }
 
 .search-input {
@@ -486,24 +485,24 @@ html {
 }
 
 .search-btn {
-    background: #2e7d32;
-    color: white;
+    background: transparent;
+    color: #666;
     border: none;
-    padding: 0 24px;
+    padding: 0 20px;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 500;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
     height: 100%;
-    min-width: 90px;
-    border-radius: 0 12px 12px 0;
+    min-width: 70px;
+    border-radius: 0 8px 8px 0;
+    border-left: 1px solid #e0e0e0;
 }
 
 .search-btn:hover {
-    background: #1b5e20;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    background: #f8f9fa;
+    color: #2e7d32;
 }
 
 /* Category Filters */
@@ -751,23 +750,27 @@ html {
 /* Responsive Design for Products Page */
 @media (max-width: 768px) {
     .products-header {
-        padding: 100px 0 40px;
+        padding: 30px 0 40px;
     }
     
     .search-container {
-        top: 70px;
         padding: 0.5rem 0;
     }
     
     .search-box {
         max-width: 95%;
-        border-radius: 12px;
+        border-radius: 8px;
         height: 44px;
     }
     
     .search-icon {
         padding: 0 15px;
         font-size: 1rem;
+        min-width: 45px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .search-input {
@@ -776,9 +779,9 @@ html {
     }
     
     .search-btn {
-        padding: 0 20px;
+        padding: 0 16px;
         font-size: 0.9rem;
-        min-width: 80px;
+        min-width: 60px;
     }
     
     .category-filters {
@@ -804,22 +807,27 @@ html {
 
 @media (max-width: 480px) {
     .products-header {
-        padding: 80px 0 30px;
+        padding: 20px 0 30px;
     }
     
     .search-container {
-        top: 60px;
         margin-bottom: 2rem;
     }
     
     .search-box {
         max-width: 95%;
         height: 42px;
+        border-radius: 8px;
     }
     
     .search-icon {
         padding: 0 12px;
         font-size: 0.9rem;
+        min-width: 40px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .search-input {
@@ -828,9 +836,9 @@ html {
     }
     
     .search-btn {
-        padding: 0 16px;
+        padding: 0 12px;
         font-size: 0.85rem;
-        min-width: 70px;
+        min-width: 50px;
     }
     
     .category-filters {
