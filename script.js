@@ -274,55 +274,55 @@ function initializeProductsPage() {
         // Fresh Produce
         {
             id: 1,
-            name: "Fresh Apples",
+            name: "Apples",
             category: "fresh-produce",
             categoryName: "Fresh Produce",
             price: 120,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Apples.avif"
         },
         {
             id: 2,
-            name: "Fresh Tomatoes",
+            name: "Tomatoes",
             category: "fresh-produce",
             categoryName: "Fresh Produce",
             price: 80,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Tomatoes.avif"
         },
         
         // Dairy & Eggs
         {
             id: 3,
-            name: "Fresh Milk",
+            name: "Milk",
             category: "dairy-eggs",
             categoryName: "Dairy & Eggs",
             price: 60,
             stock: "Low stock",
             stockStatus: "low",
-            image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Milk.jpg"
         },
         {
             id: 4,
-            name: "Fresh Butter",
+            name: "Butter",
             category: "dairy-eggs",
             categoryName: "Dairy & Eggs",
             price: 45,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Butter.jpeg"
         },
         {
             id: 5,
-            name: "Fresh Eggs",
+            name: "Eggs",
             category: "dairy-eggs",
             categoryName: "Dairy & Eggs",
             price: 90,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1506976785307-8732e854ad8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Eggs.jpeg"
         },
         
         // Bakery & Snacks
@@ -334,73 +334,73 @@ function initializeProductsPage() {
             price: 35,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Whole wheat bread.jpeg"
         },
         {
             id: 7,
-            name: "Fresh Biscuits",
+            name: "Biscuits",
             category: "bakery-snacks",
             categoryName: "Bakery & Snacks",
             price: 25,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1558961363-f8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Biscuits.jpeg"
         },
         
         // Beverages
         {
             id: 8,
-            name: "Premium Tea",
+            name: "Tea",
             category: "beverages",
             categoryName: "Beverages",
             price: 150,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Tea.jpeg"
         },
         {
             id: 9,
-            name: "Fresh Orange Juice",
+            name: "Orange Juice",
             category: "beverages",
             categoryName: "Beverages",
             price: 80,
             stock: "Low stock",
             stockStatus: "low",
-            image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Orange juice.jpg"
         },
         
         // Grains & Staples
         {
             id: 10,
-            name: "Premium Basmati Rice",
+            name: "Basmati Rice",
             category: "grains-staples",
             categoryName: "Grains & Staples",
             price: 180,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Basmati rice.jpeg"
         },
         
         // Oils & Spices
         {
             id: 11,
-            name: "Pure Cooking Oil",
+            name: "Cooking Oil",
             category: "oils-spices",
             categoryName: "Oils & Spices",
             price: 120,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Cooking oil.jpg"
         },
         {
             id: 12,
-            name: "Organic Turmeric Powder",
+            name: "Turmeric Powder",
             category: "oils-spices",
             categoryName: "Oils & Spices",
             price: 95,
             stock: "In stock",
             stockStatus: "in",
-            image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            image: "./images/Turmeric.jpeg"
         }
     ];
 
@@ -487,7 +487,6 @@ function initializeProductsPage() {
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
                 </div>
                 <div class="product-info">
-                    <div class="product-category">${product.categoryName}</div>
                     <h3 class="product-name">${product.name}</h3>
                     <div class="product-price">₹${product.price}</div>
                     <div class="product-stock">
