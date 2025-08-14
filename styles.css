@@ -413,20 +413,22 @@ html {
 
 /* Products Header Section */
 .products-header {
-    padding: 40px 0 60px;
+    padding: 20px 0 40px;
     background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
     text-align: center;
+    margin-top: 0;
 }
 
 .products-header .section-title {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
 }
 
 /* Search Container */
 .search-container { 
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     background: transparent;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     border-bottom: none;
 }
 
@@ -519,7 +521,7 @@ html {
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .category-btn {
@@ -550,7 +552,7 @@ html {
 
 /* Products Section */
 .products-section {
-    padding: 60px 0;
+    padding: 40px 0;
     background: white;
 }
 
