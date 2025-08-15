@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - BazaarBuddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <main>
+        <section class="cart-section">
+            <div class="container">
+                <h1 class="section-title">Your Shopping Cart</h1>
+                <div class="cart-container">
+                    <div class="cart-items" id="cart-items-container">
+                        <!-- Cart items will be dynamically loaded here -->
+                    </div>
+                    <div class="cart-summary">
+                        <h2>Order Summary</h2>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">₹0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span>FREE</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span id="cart-total">₹0.00</span>
+                        </div>
+                        <button class="checkout-btn">Proceed to Checkout</button>
+                    </div>
+                </div>
+                <div class="clear-cart-container">
+                    <button class="btn-secondary" id="clear-cart-btn" style="width: auto;">Clear Cart</button>
+                </div>
+                <div id="empty-cart-message" class="empty-cart-message" style="display: none;">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Your cart is empty</h2>
+                    <p>Looks like you haven't added anything to your cart yet.</p>
+                    <a href="products.html" class="cta-button">Start Shopping</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="index.html" class="bottom-nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="products.html" class="bottom-nav-item">
+                <i class="fas fa-cube"></i>
+                <span>Products</span>
+            </a>
+            <a href="cart.html" class="bottom-nav-item active cart-nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-badge">0</span>
+                <span>Cart</span>
+            </a>
+            <a href="#" class="bottom-nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>Orders</span>
+            </a>
+            <a href="#" class="bottom-nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -505,26 +505,43 @@ function initializeProductsPage() {
     // Add to cart functionality
     window.addToCart = function(productId) {
         const product = products.find(p => p.id === productId);
-        if (product) {
-            // Show success message
-            showNotification(`${product.name} added to cart!`, 'success');
-            
-            // Here you would typically add the product to a cart state
-            // For now, we'll just log it
-            console.log(`Added to cart: ${product.name}`);
-            
-            // Add animation to the button
-            const button = event.target.closest('.add-to-cart-btn');
+        if (!product) return;
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingProduct = cart.find(item => item.id === productId);
+
+        if (existingProduct) {
+            existingProduct.quantity++;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartBadge();
+
+        // Show success message and animate button
+        showNotification(`${product.name} added to cart!`, 'success');
+        const button = event.target.closest('.add-to-cart-btn');
+        if (button) {
             button.innerHTML = '<i class="fas fa-check"></i> Added!';
             button.style.background = '#4caf50';
-            
-            // Reset button after 2 seconds
             setTimeout(() => {
                 button.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
                 button.style.background = '#2e7d32';
             }, 2000);
         }
     };
+
+    // Update cart badge
+    function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartBadge = document.querySelector('.cart-badge');
+        if (cartBadge) {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalItems;
+            cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+    }
 
     // Show notification
     function showNotification(message, type = 'info') {
@@ -593,6 +610,7 @@ function initializeProductsPage() {
     // Initialize the products page
     renderProducts();
     setupEventListeners();
+    updateCartBadge(); // Initial cart badge update
 }
 
 // Initialize products page if we're on the products page
@@ -600,4 +618,138 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.includes('products.html')) {
         initializeProductsPage();
     }
-}); 
+    if (window.location.pathname.includes('cart.html')) {
+        initializeCartPage();
+    }
+
+    // Update cart badge on all pages
+    updateCartBadge();
+});
+
+// Cart Page Functionality
+function initializeCartPage() {
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartSubtotalElement = document.getElementById('cart-subtotal');
+    const cartTotalElement = document.getElementById('cart-total');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    const cartContainer = document.querySelector('.cart-container');
+    const clearCartBtn = document.getElementById('clear-cart-btn');
+    const clearCartContainer = document.querySelector('.clear-cart-container');
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartBadge(); // Update badge whenever cart changes
+    }
+
+    function renderCart() {
+        if (cart.length === 0) {
+            if(emptyCartMessage) emptyCartMessage.style.display = 'block';
+            if(cartContainer) cartContainer.style.display = 'none';
+            if(clearCartContainer) clearCartContainer.style.display = 'none';
+            return;
+        }
+
+        if(emptyCartMessage) emptyCartMessage.style.display = 'none';
+        if(cartContainer) cartContainer.style.display = 'flex';
+        if(clearCartContainer) clearCartContainer.style.display = 'flex';
+        if(cartItemsContainer) cartItemsContainer.innerHTML = '';
+
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <h3 class="cart-item-name">${item.name}</h3>
+                    <p class="cart-item-price">₹${item.price.toFixed(2)}</p>
+                    <div class="quantity-control">
+                        <button class="quantity-btn decrease-quantity" data-id="${item.id}">-</button>
+                        <span class="item-quantity">${item.quantity}</span>
+                        <button class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
+                    </div>
+                </div>
+                <button class="remove-item-btn" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+            `;
+            if(cartItemsContainer) cartItemsContainer.appendChild(cartItem);
+        });
+
+        updateCartSummary();
+        addEventListeners();
+    }
+
+    function updateCartSummary() {
+        const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        if(cartSubtotalElement) cartSubtotalElement.textContent = `₹${subtotal.toFixed(2)}`;
+        if(cartTotalElement) cartTotalElement.textContent = `₹${subtotal.toFixed(2)}`; // Assuming shipping is free
+    }
+
+    function addEventListeners() {
+        document.querySelectorAll('.decrease-quantity').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const id = parseInt(e.target.dataset.id);
+                updateQuantity(id, -1);
+            });
+        });
+
+        document.querySelectorAll('.increase-quantity').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const id = parseInt(e.target.dataset.id);
+                updateQuantity(id, 1);
+            });
+        });
+
+        document.querySelectorAll('.remove-item-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const id = parseInt(e.currentTarget.dataset.id);
+                removeFromCart(id);
+            });
+        });
+        
+        if(clearCartBtn) {
+            clearCartBtn.addEventListener('click', () => {
+                cart = [];
+                saveCart();
+                renderCart();
+            });
+        }
+    }
+
+    function updateQuantity(id, change) {
+        const item = cart.find(i => i.id === id);
+        if (item) {
+            item.quantity += change;
+            if (item.quantity <= 0) {
+                removeFromCart(id);
+            } else {
+                saveCart();
+                renderCart();
+            }
+        }
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(i => i.id !== id);
+        saveCart();
+        renderCart();
+    }
+
+    // Initial render
+    if (cartItemsContainer) {
+        renderCart();
+    }
+}
+
+// This function needs to be available globally if it's not already.
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartBadges = document.querySelectorAll('.cart-badge');
+    if (cartBadges.length > 0) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartBadges.forEach(cartBadge => {
+            cartBadge.textContent = totalItems;
+            cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+        });
+    }
+} 
