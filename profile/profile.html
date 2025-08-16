@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - BazaarBuddy</title>
+    <link rel="stylesheet" href="profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+
+    <main class="profile-main">
+        <div class="container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <div class="avatar-container">
+                        <img src="../images/profile-avatar.svg" alt="Profile Picture" id="profile-pic">
+                        <div class="avatar-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                    <input type="file" id="avatar-input" accept="image/*" style="display: none;">
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">John Doe</h1>
+                    <p class="profile-email">john.doe@example.com</p>
+                    <p class="profile-phone">+91 98765 43210</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Orders</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">₹2,450</span>
+                            <span class="stat-label">Total Spent</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.8</span>
+                            <span class="stat-label">Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Navigation Tabs -->
+            <div class="profile-nav">
+                <input type="radio" name="profile-tab" id="tab-personal" checked>
+                <input type="radio" name="profile-tab" id="tab-addresses">
+                <input type="radio" name="profile-tab" id="tab-payment">
+                <input type="radio" name="profile-tab" id="tab-preferences">
+                <input type="radio" name="profile-tab" id="tab-security">
+
+                <div class="tab-labels">
+                    <label for="tab-personal" class="tab-label">
+                        <i class="fas fa-user"></i>
+                        Personal Info
+                    </label>
+                    <label for="tab-addresses" class="tab-label">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Addresses
+                    </label>
+                    <label for="tab-payment" class="tab-label">
+                        <i class="fas fa-credit-card"></i>
+                        Payment Methods
+                    </label>
+                    <label for="tab-preferences" class="tab-label">
+                        <i class="fas fa-cog"></i>
+                        Preferences
+                    </label>
+                    <label for="tab-security" class="tab-label">
+                        <i class="fas fa-shield-alt"></i>
+                        Security
+                    </label>
+                </div>
+
+                <!-- Personal Information Tab -->
+                <div class="tab-content" id="personal-content">
+                    <div class="content-header">
+                        <h2>Personal Information</h2>
+                        <p>Update your personal details and contact information</p>
+                    </div>
+                    <form class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" value="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" value="Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" value="john.doe@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" value="+91 98765 43210" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-of-birth">Date of Birth</label>
+                            <input type="date" id="date-of-birth" value="1990-01-15">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not">Prefer not to say</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Addresses Tab -->
+                <div class="tab-content" id="addresses-content">
+                    <div class="content-header">
+                        <h2>Delivery Addresses</h2>
+                        <p>Manage your delivery addresses for quick checkout</p>
+                    </div>
+                    <div class="addresses-container">
+                        <div class="address-card">
+                            <div class="address-header">
+                                <h3>Home Address</h3>
+                                <span class="address-type">Default</span>
+                            </div>
+                            <div class="address-details">
+                                <p>123 Main Street, Apartment 4B</p>
+                                <p>Mumbai, Maharashtra 400001</p>
+                                <p>India</p>
+                            </div>
+                            <div class="address-actions">
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                        <div class="address-card">
+                            <div class="address-header">
+                                <h3>Office Address</h3>
+                            </div>
+                            <div class="address-details">
+                                <p>456 Business Park, Floor 8</p>
+                                <p>Mumbai, Maharashtra 400002</p>
+                                <p>India</p>
+                            </div>
+                            <div class="address-actions">
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary add-address-btn">
+                            <i class="fas fa-plus"></i>
+                            Add New Address
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Payment Methods Tab -->
+                <div class="tab-content" id="payment-content">
+                    <div class="content-header">
+                        <h2>Payment Methods</h2>
+                        <p>Manage your saved payment methods for quick checkout</p>
+                    </div>
+                    <div class="payment-methods-container">
+                        <div class="payment-card">
+                            <div class="payment-info">
+                                <div class="card-icon">
+                                    <i class="fab fa-cc-visa"></i>
+                                </div>
+                                <div class="card-details">
+                                    <h3>Visa ending in 1234</h3>
+                                    <p>Expires 12/25</p>
+                                </div>
+                            </div>
+                            <div class="payment-actions">
+                                <span class="default-badge">Default</span>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                        <div class="payment-card">
+                            <div class="payment-info">
+                                <div class="card-icon">
+                                    <i class="fab fa-cc-mastercard"></i>
+                                </div>
+                                <div class="card-details">
+                                    <h3>Mastercard ending in 5678</h3>
+                                    <p>Expires 08/26</p>
+                                </div>
+                            </div>
+                            <div class="payment-actions">
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary add-payment-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Payment Method
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preferences Tab -->
+                <div class="tab-content" id="preferences-content">
+                    <div class="content-header">
+                        <h2>Preferences</h2>
+                        <p>Customize your BazaarBuddy experience</p>
+                    </div>
+                    <div class="preferences-container">
+                        <div class="preference-section">
+                            <h3>Notifications</h3>
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Order Updates</h4>
+                                    <p>Get notified about order status changes</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Promotional Offers</h4>
+                                    <p>Receive deals and discounts</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>New Products</h4>
+                                    <p>Get notified about new arrivals</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="preference-section">
+                            <h3>Delivery Preferences</h3>
+                            <div class="form-group">
+                                <label for="delivery-time">Preferred Delivery Time</label>
+                                <select id="delivery-time">
+                                    <option value="anytime">Anytime</option>
+                                    <option value="morning">Morning (9 AM - 12 PM)</option>
+                                    <option value="afternoon">Afternoon (12 PM - 3 PM)</option>
+                                    <option value="evening">Evening (3 PM - 6 PM)</option>
+                                    <option value="night">Night (6 PM - 9 PM)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="delivery-instructions">Delivery Instructions</label>
+                                <textarea id="delivery-instructions" rows="3" placeholder="Any special instructions for delivery..."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Save Preferences
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Tab -->
+                <div class="tab-content" id="security-content">
+                    <div class="content-header">
+                        <h2>Security Settings</h2>
+                        <p>Manage your account security and privacy</p>
+                    </div>
+                    <div class="security-container">
+                        <div class="security-section">
+                            <h3>Change Password</h3>
+                            <form class="password-form">
+                                <div class="form-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input type="password" id="current-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">New Password</label>
+                                    <input type="password" id="new-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm New Password</label>
+                                    <input type="password" id="confirm-password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-key"></i>
+                                    Change Password
+                                </button>
+                            </form>
+                        </div>
+                        <div class="security-section">
+                            <h3>Two-Factor Authentication</h3>
+                            <div class="two-factor-info">
+                                <p>Add an extra layer of security to your account</p>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    Enable 2FA
+                                </button>
+                            </div>
+                        </div>
+                        <div class="security-section">
+                            <h3>Account Actions</h3>
+                            <div class="account-actions">
+                                <button class="btn btn-warning">
+                                    <i class="fas fa-download"></i>
+                                    Download My Data
+                                </button>
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-user-times"></i>
+                                    Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="../index.html" class="bottom-nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../products.html" class="bottom-nav-item">
+                <i class="fas fa-cube"></i>
+                <span>Products</span>
+            </a>
+            <a href="../cart.html" class="bottom-nav-item cart-nav-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-badge">0</span>
+                <span>Cart</span>
+            </a>
+            <a href="../history/history.html" class="bottom-nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>Orders</span>
+            </a>
+            <a href="../profile/profile.html" class="bottom-nav-item active">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Profile picture upload
+        const avatarInput = document.getElementById('avatar-input');
+        const profilePic = document.getElementById('profile-pic');
+        const avatarOverlay = document.querySelector('.avatar-overlay');
+
+        avatarOverlay.addEventListener('click', () => {
+            avatarInput.click();
+        });
+
+        avatarInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePic.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Add form submission logic here
+                alert('Changes saved successfully!');
+            });
+        });
+
+        // Tab switching
+        document.querySelectorAll('input[name="profile-tab"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                // Show selected tab content
+                const selectedTab = radio.id.replace('tab-', '');
+                const contentElement = document.getElementById(selectedTab + '-content');
+                if (contentElement) {
+                    contentElement.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
