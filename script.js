@@ -458,8 +458,7 @@ function initializeProductsPage() {
     // Filter products based on search and category
     function filterProducts() {
         filteredProducts = products.filter(product => {
-            const matchesSearch = product.name.toLowerCase().includes(searchQuery) ||
-                                product.categoryName.toLowerCase().includes(searchQuery);
+            const matchesSearch = product.name.toLowerCase().includes(searchQuery);
             const matchesCategory = currentCategory === 'all' || product.category === currentCategory;
             
             return matchesSearch && matchesCategory;
